@@ -6,7 +6,7 @@ export default class AuthController {
   public async login({ response, request, auth }: HttpContextContract) {
     const { uid, password } = request.only(['uid', 'password'])
 
-    const token = await auth.attempt(uid, password)
+    const token = await auth.attempt(uid, password, { expiresIn: '10 days' })
     const user = auth.user as User
     const profile = await user.related('profile').query().first()
     const { username, email } = user
