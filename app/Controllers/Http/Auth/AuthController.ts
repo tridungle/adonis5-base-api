@@ -21,7 +21,12 @@ export default class AuthController {
   }
 
   public async logout({ response, auth }: HttpContextContract) {
-    await auth.logout()
-    return response.status(204).send(null)
+    try {
+      await auth.logout()
+      return response.status(204).send(null)
+    } catch (_) {
+      const message = 'Erro ao realizar logout.'
+      return response.status(400).send({ message })
+    }
   }
 }
