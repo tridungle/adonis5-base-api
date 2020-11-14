@@ -7,8 +7,8 @@ export default class AuthController {
     const password = request.input('password')
 
     const token = await auth.attempt(uid, password)
-    const { username, email } = auth.user as User
+    const { username, email, avatar, firstName, surname } = auth.user as User
 
-    return response.send({ token, user: { email, username } })
+    return response.send({ token, user: { email, username, avatar, firstName, surname } })
   }
 }
