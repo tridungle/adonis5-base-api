@@ -14,4 +14,9 @@ export default class AuthController {
 
     return response.send({ token, user: { email, username, avatar, firstName, surname } })
   }
+
+  public async logout({ response, auth }: HttpContextContract) {
+    await auth.logout()
+    return response.status(204).send(null)
+  }
 }
