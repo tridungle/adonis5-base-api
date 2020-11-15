@@ -6,8 +6,8 @@ export default class Countries extends BaseSchema {
   public async up() {
     this.schema.createTable(this.tableName, (table) => {
       table.increments('id')
-      table.string('name')
-      table.string('code').unique()
+      table.string('name', 150).notNullable()
+      table.string('code', 5).unique().notNullable()
       table.boolean('status').defaultTo(true)
       table.timestamps(true)
     })

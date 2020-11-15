@@ -7,8 +7,8 @@ export default class Cities extends BaseSchema {
     this.schema.createTable(this.tableName, (table) => {
       table.increments('id')
       table.integer('state_id').unsigned()
-      table.string('code')
-      table.string('name')
+      table.string('code', 20)
+      table.string('name', 150).notNullable()
       table.boolean('status').defaultTo(true)
       table.timestamps(true)
 
