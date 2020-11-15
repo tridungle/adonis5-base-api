@@ -1,7 +1,16 @@
 import { DateTime } from 'luxon'
 import Hash from '@ioc:Adonis/Core/Hash'
-import { column, beforeSave, BaseModel, hasOne, HasOne } from '@ioc:Adonis/Lucid/Orm'
+import {
+  column,
+  beforeSave,
+  BaseModel,
+  hasOne,
+  HasOne,
+  hasMany,
+  HasMany,
+} from '@ioc:Adonis/Lucid/Orm'
 import Profile from './Profile'
+import Address from './Address'
 
 export default class User extends BaseModel {
   @column({ isPrimary: true })
@@ -27,6 +36,14 @@ export default class User extends BaseModel {
 
   @hasOne(() => Profile)
   public profile: HasOne<typeof Profile>
+
+  @hasMany(() => Address)
+  public addresses: HasMany<typeof Address>
+
+  @hasOne(() => Address, {
+    onQuery: (query) => query.where('is_default', true),
+  })
+  public address: HasOne<typeof Address>
 
   @beforeSave()
   public static async hashPassword(user: User) {
