@@ -10,6 +10,9 @@ export default class Country extends BaseModel {
   public name: string
 
   @column()
+  public code: string
+
+  @column()
   public status: boolean
 
   @column.dateTime({ autoCreate: true })

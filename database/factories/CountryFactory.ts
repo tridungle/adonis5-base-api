@@ -7,6 +7,7 @@ export const CountryFactory = Factory.define(Country, ({ faker }) => {
   faker.setLocale(Env.get('FAKER_LOCALE'))
   return {
     name: faker.address.country(),
+    code: faker.address.countryCode(),
   }
 })
   .relation('states', () => StateFactory)
