@@ -7,7 +7,9 @@
     "start": "node server.js",
     "dev": "node ace serve --watch",
     "lint": "eslint . --ext=.ts",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "refreshdb": "node ace migration:rollback && node ace migration:run",
+    "refreshdb:seed": "npm run refreshdb && node ace db:seed"
   },
   "devDependencies": {
     "@adonisjs/assembler": "^3.0.6",
