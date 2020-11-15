@@ -3,6 +3,6 @@ import { CountryFactory } from 'Database/factories'
 
 export default class CountrySeeder extends BaseSeeder {
   public async run() {
-    await CountryFactory.with('states', 10).createMany(5)
+    await CountryFactory.with('states', 10, (state) => state.with('cities', 40)).createMany(5)
   }
 }
