@@ -3,9 +3,6 @@ import test from 'japa'
 import User from 'App/Models/User'
 import Profile from 'App/Models/Profile'
 
-const BASE_URL = `http://${process.env.HOST}:${process.env.PORT}/v1`
-axios.defaults.baseURL = BASE_URL
-
 async function createUser(): Promise<User> {
   const user = new User()
   user.username = 'valid_username'

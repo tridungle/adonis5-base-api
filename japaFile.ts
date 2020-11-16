@@ -1,3 +1,4 @@
+import axios from 'axios'
 import 'reflect-metadata'
 import execa from 'execa'
 import { join } from 'path'
@@ -21,6 +22,8 @@ async function startHttpServer() {
   const { Ignitor } = await import('@adonisjs/core/build/src/Ignitor')
   process.env.PORT = String(await getPort())
   await new Ignitor(__dirname).httpServer().start()
+  const BASE_URL = `http://${process.env.HOST}:${process.env.PORT}/v1`
+  axios.defaults.baseURL = BASE_URL
 }
 
 function getTestFiles() {
