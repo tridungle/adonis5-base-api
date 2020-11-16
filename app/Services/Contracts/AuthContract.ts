@@ -18,4 +18,5 @@ export interface LoginResponse {
 
 export interface AuthContract {
   authorize(uid: string, password: string, ...args: any): Promise<LoginResponse>
+  logout(...args: any): Promise<void>
 }

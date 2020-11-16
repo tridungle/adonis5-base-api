@@ -22,7 +22,7 @@ export default class AuthController {
 
   public async logout({ response, auth }: HttpContextContract) {
     try {
-      await auth.logout()
+      await this.authService.logout(auth)
       return success(response)
     } catch (_) {
       return badRequest(response, 'Erro ao realizar logout.')

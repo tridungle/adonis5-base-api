@@ -17,4 +17,8 @@ export class AuthService implements AuthContract {
 
     return { token, user: { id, email, username, avatar, firstName, surname } }
   }
+
+  public async logout(auth: AAuthContract): Promise<void> {
+    await auth.logout()
+  }
 }
