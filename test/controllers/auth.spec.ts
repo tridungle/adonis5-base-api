@@ -38,6 +38,6 @@ test.group('auth', (group) => {
 
     assert.containsAllKeys(data, ['token', 'user'])
     assert.containsAllKeys(token, ['token', 'type'])
-    assert.containsAllKeys(user, ['email', 'username', 'avatar', 'firstName', 'surname'])
+    assert.containsAllKeys(user, ['id', 'email', 'username', 'avatar', 'firstName', 'surname'])
   })
 })
