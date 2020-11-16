@@ -1,15 +1,19 @@
+import { UserContract } from 'App/Models/Contracts'
+
+export type TokenResponse = {
+  token: string
+  type: string
+}
+
+export interface UserLoginResponse extends UserContract {
+  avatar: string
+  firstName: string
+  surname: string
+}
+
 export interface LoginResponse {
-  token: {
-    token: string
-    type: string
-  }
-  user: {
-    email: string
-    username: string
-    avatar: string
-    firstName: string
-    surname: string
-  }
+  token: TokenResponse
+  user: UserLoginResponse
 }
 
 export interface AuthContract {

@@ -11,8 +11,9 @@ import {
 } from '@ioc:Adonis/Lucid/Orm'
 import Profile from './Profile'
 import Address from './Address'
+import { UserContract } from './Contracts'
 
-export default class User extends BaseModel {
+export default class User extends BaseModel implements UserContract {
   @column({ isPrimary: true })
   public id: number
 

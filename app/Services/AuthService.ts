@@ -12,9 +12,9 @@ export class AuthService implements AuthContract {
     const token = await auth.attempt(uid, password, { expiresIn: '10 days' })
     const user = auth.user as User
     const profile = await user.related('profile').query().first()
-    const { username, email } = user
+    const { username, email, id } = user
     const { avatar, firstName, surname } = profile as Profile
 
-    return { token, user: { email, username, avatar, firstName, surname } }
+    return { token, user: { id, email, username, avatar, firstName, surname } }
   }
 }
