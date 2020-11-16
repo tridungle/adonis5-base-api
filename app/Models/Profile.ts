@@ -1,8 +1,9 @@
 import { DateTime } from 'luxon'
 import { BaseModel, BelongsTo, belongsTo, column } from '@ioc:Adonis/Lucid/Orm'
 import User from './User'
+import { ProfileContract } from './Contracts'
 
-export default class Profile extends BaseModel {
+export default class Profile extends BaseModel implements ProfileContract {
   @column({ isPrimary: true })
   public id: number
 
@@ -16,7 +17,7 @@ export default class Profile extends BaseModel {
   public surname: string
 
   @column()
-  public avatar: string
+  public avatar?: string
 
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime

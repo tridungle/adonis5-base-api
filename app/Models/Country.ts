@@ -1,8 +1,9 @@
 import { DateTime } from 'luxon'
 import { BaseModel, column, HasMany, hasMany } from '@ioc:Adonis/Lucid/Orm'
 import State from './State'
+import { CountryContract } from './Contracts'
 
-export default class Country extends BaseModel {
+export default class Country extends BaseModel implements CountryContract {
   @column({ isPrimary: true })
   public id: number
 

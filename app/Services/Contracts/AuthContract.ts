@@ -6,7 +6,7 @@ export type TokenResponse = {
 }
 
 export interface UserLoginResponse extends UserContract {
-  avatar: string
+  avatar?: string
   firstName: string
   surname: string
 }

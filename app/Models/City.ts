@@ -2,8 +2,9 @@ import { DateTime } from 'luxon'
 import { BaseModel, BelongsTo, belongsTo, column, HasMany, hasMany } from '@ioc:Adonis/Lucid/Orm'
 import State from './State'
 import Address from './Address'
+import { CityContract } from './Contracts'
 
-export default class City extends BaseModel {
+export default class City extends BaseModel implements CityContract {
   @column({ isPrimary: true })
   public id: number
 

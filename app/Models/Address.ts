@@ -1,9 +1,10 @@
 import { DateTime } from 'luxon'
 import { BaseModel, BelongsTo, belongsTo, column } from '@ioc:Adonis/Lucid/Orm'
+import { AddressContract } from './Contracts'
 import City from './City'
 import User from './User'
 
-export default class Address extends BaseModel {
+export default class Address extends BaseModel implements AddressContract {
   @column({ isPrimary: true })
   public id: number
 
@@ -26,10 +27,10 @@ export default class Address extends BaseModel {
   public neighborhood: string
 
   @column()
-  public complement: string
+  public complement?: string
 
   @column()
-  public isDefault: string
+  public isDefault: boolean
 
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime
