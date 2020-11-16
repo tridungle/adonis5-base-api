@@ -40,4 +40,21 @@ test.group('auth', (group) => {
     assert.containsAllKeys(token, ['token', 'type'])
     assert.containsAllKeys(user, ['id', 'email', 'username', 'avatar', 'firstName', 'surname'])
   })
+
+  test('ensure return 401 error on logout if no token is provided', async (assert) => {
+    const response = await axios.post('/auth/logout').catch((e) => e.response.status)
+    assert.deepEqual(401, response)
+  })
+
+  test('ensure returns 204 on logout if token is provided', async (assert) => {
+    const form = { uid: 'valid_username', password: 'secret' }
+    const { data } = await axios.post('/auth/login', form)
+    const { token } = data
+
+    const { status } = await axios.post('/auth/logout', null, {
+      headers: { Authorization: `${token.type} ${token.token}` },
+    })
+
+    assert.deepEqual(204, status)
+  })
 })
